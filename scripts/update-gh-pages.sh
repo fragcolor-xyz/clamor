@@ -19,7 +19,8 @@ git config user.email "$BOT_EMAIL"
 cargo doc --no-deps # saves doc in $DOC_FOLDER_MAIN_BRANCH
 
 git fetch
-git checkout "$TARGET_BRANCH"
+# We use the `--force` flag because sometimes `cargo doc` causes the Cargo.lock to be altered. So if we don't use `--force`, we can't checkout the branch `$TARGET_BRANCH`.
+git checkout --force "$TARGET_BRANCH" # What the `--force` flag does: "When switching branches, proceed even if the index or the working tree differs from HEAD. This is used to throw away local changes."
 
 rm -rf "${DOC_FOLDER_TARGET_BRANCH}" # because of the `-f` flag, no errors will be outputted if the folder doesn't exist
 cp -r "${DOC_FOLDER_MAIN_BRANCH}/." "${DOC_FOLDER_TARGET_BRANCH}" 
