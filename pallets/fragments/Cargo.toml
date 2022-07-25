@@ -112,6 +112,9 @@ git = 'https://github.com/clamor-io/substrate.git'
 tag = 'clamor-04-07-2022'
 version = '4.0.0-dev'
 
+[dev-dependencies]
+itertools = "0.10.3"
+
 [features]
 default = ["std"]
 std = [
